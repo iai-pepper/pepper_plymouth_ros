@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="map"   default="$(find pepper_plymouth_ros)/maps/lab_map2.yaml" />
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map)">
+	<param name="frame_id" value="map" />
+    </node>
+    <!-- not using any localization -> we assume that the /odom frame is always correct -->
+    <!--node name="map_odom_transform" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map pepper_robot/odom 10"/-->
+     
+</launch>
