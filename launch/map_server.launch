@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-    <arg name="map"   default="$(find pepper_plymouth_ros)/maps/lab_map2.yaml" />
+    <arg name="map"   default="$(find pepper_plymouth_ros)/maps/pepper_map_2.yaml" />
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map)">
 	<param name="frame_id" value="map" />
     </node>

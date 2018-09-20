@@ -1,25 +1,36 @@
 <?xml version="1.0"?>
 <launch>
     <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
-        <param name="base_frame" 	value="base_footprint" />
+        <param name="base_frame" 	value="/pepper_robot/base_footprint" />
 	<param name="map_frame" 	value="map" />
-	<param name="odom_frame"	value="odom" />
+	<param name="odom_frame"	value="pepper_robot/odom" />
 
-	<remap from="/scan" to="/laser/srd_front/scan"/>
+	<remap from="/scan" to="/pepper_robot/multi_scan"/>
         
-	<param name="map_update_interval" value="1" />
-        <param name="linearUpdate" value="0.05" />
-        <param name="angularUpdate" value="0.05" />
-        <param name="temporalUpdate" value="0.05" />
-        <param name="xmin" value="-1.0" />
-        <param name="ymin" value="-1.0" />
-        <param name="xmax" value="1.0" />
-        <param name="ymax" value="1.0" />
-        <param name="particles" value="15" />
-        <param name="maxRange" value="5.0" />
+	<param name="map_update_interval" value="0.1" />
+        <param name="linearUpdate" value="0.1" />
+        <param name="angularUpdate" value="0.5" />
+        <param name="temporalUpdate" value="0.1" />
+        <param name="resampleThreshold" value="0.5"/>
+        <param name="xmin" value="-10.0" />
+        <param name="ymin" value="-10.0" />
+        <param name="xmax" value="10.0" />
+        <param name="ymax" value="10.0" />
+        <param name="particles" value="100" />
+        <param name="maxRange" value="4.0" />
         <param name="maxUrange" value="5.0" />
-        <param name="delta" value="0.05" />
-	<param name="ogain" value="2.0"/>
+        <param name="delta" value="0.03" />
+        <param name="minimumScore" value="100.0" />
+        
+        <!-- error values -->
+        <!--param name="srr" value="0.1" />
+        <param name="srt" value="0.2" />
+        <param name="str" value="0.1" />
+        <param name="stt" value="0.2" /-->
+        
+        <!--param name="lstep" value="0.05" />
+        <param name="astep" value="0.05" /-->
+	<!--param name="ogain" value="2.0"/-->
     </node>
 
 </launch>
